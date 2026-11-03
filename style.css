@@ -73,3 +73,26 @@ footer p{margin:0 0 6px}
   h1{font-size:1.7rem}
   table.data{display:block;overflow-x:auto}
 }
+
+/* Page tabs, search and edit links */
+.top-inner{flex-wrap:wrap}
+.search{margin-left:auto;display:flex;gap:6px;flex:1 1 220px;max-width:360px}
+.search input{flex:1;min-width:0;font:inherit;font-size:.9rem;padding:6px 10px;border:1px solid var(--rule);border-radius:2px;background:var(--bg);color:var(--ink)}
+.search button{font:inherit;font-size:.85rem;padding:6px 12px;border:1px solid var(--rule);border-radius:2px;background:var(--soft);color:var(--ink);cursor:pointer}
+.pagetabs{display:flex;flex-wrap:wrap;justify-content:space-between;column-gap:12px;border-bottom:1px solid var(--rule);margin:4px 0 0;font-size:.86rem}
+.tabgroup{display:flex;align-items:flex-end;white-space:nowrap}
+.tab{display:block;padding:8px 10px 6px;color:var(--link);border-bottom:2px solid transparent;cursor:pointer;list-style:none}
+.tab::-webkit-details-marker{display:none}
+.tab.active{color:var(--ink);border-bottom-color:var(--ink)}
+.tools{position:relative}
+.tools summary::after{content:" \25BE";font-size:.75em}
+.tools .menu{position:absolute;right:0;top:100%;z-index:10;min-width:190px;background:var(--bg);border:1px solid var(--rule);box-shadow:0 4px 14px rgba(0,0,0,.15);padding:6px 0;display:flex;flex-direction:column}
+.tools .menu a,.tools .menu button{display:block;text-align:left;padding:6px 14px;font:inherit;font-size:.86rem;color:var(--link);background:none;border:0;cursor:pointer;white-space:nowrap}
+.tools .menu a:hover,.tools .menu button:hover{background:var(--soft);text-decoration:none}
+.editsection{font:400 .8rem var(--sans);margin-left:10px;color:var(--muted);white-space:nowrap;vertical-align:middle}
+dialog.cite{border:1px solid var(--rule);background:var(--bg);color:var(--ink);max-width:min(560px,92vw);padding:18px 20px}
+dialog.cite h2{margin-top:0;font-size:1.2rem}
+dialog.cite p{font-size:.9rem;user-select:all}
+dialog.cite button{font:inherit;padding:6px 14px;border:1px solid var(--rule);background:var(--soft);color:var(--ink);cursor:pointer}
+@media (max-width:760px){.search{max-width:none;margin-left:0;flex-basis:100%}.pagetabs{font-size:.8rem;column-gap:4px}.tab{padding:8px 5px 6px}}
+@media print{.pagetabs,.search,.editsection,.top{display:none}}
