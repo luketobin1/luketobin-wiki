@@ -96,3 +96,12 @@ dialog.cite p{font-size:.9rem;user-select:all}
 dialog.cite button{font:inherit;padding:6px 14px;border:1px solid var(--rule);background:var(--soft);color:var(--ink);cursor:pointer}
 @media (max-width:760px){.search{max-width:none;margin-left:0;flex-basis:100%}.pagetabs{font-size:.8rem;column-gap:4px}.tab{padding:8px 5px 6px}}
 @media print{.pagetabs,.search,.editsection,.top{display:none}}
+
+/* On-site search suggestions */
+.search{position:relative}
+.suggest{position:absolute;left:0;right:0;top:100%;margin:4px 0 0;padding:4px 0;list-style:none;background:var(--bg);border:1px solid var(--rule);box-shadow:0 6px 18px rgba(0,0,0,.18);z-index:20;max-height:70vh;overflow-y:auto}
+.suggest li a{display:block;padding:7px 12px;color:var(--ink)}
+.suggest li a:hover,.suggest li.on a{background:var(--soft);text-decoration:none}
+.suggest b{display:block;font-weight:600;font-size:.9rem}
+.suggest small{display:block;color:var(--muted);font-size:.78rem}
+.suggest li.none{padding:8px 12px;color:var(--muted);font-size:.85rem}
