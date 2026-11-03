@@ -105,3 +105,9 @@ dialog.cite button{font:inherit;padding:6px 14px;border:1px solid var(--rule);ba
 .suggest b{display:block;font-weight:600;font-size:.9rem}
 .suggest small{display:block;color:var(--muted);font-size:.78rem}
 .suggest li.none{padding:8px 12px;color:var(--muted);font-size:.85rem}
+
+/* Sticky header on wider screens; anchor offset; target highlight */
+h2[id],h3[id]{scroll-margin-top:12px}
+@media (min-width:761px){.top{position:sticky;top:0;z-index:30}h2[id],h3[id]{scroll-margin-top:84px}}
+@keyframes flash{0%{background:color-mix(in srgb,var(--link) 22%,transparent)}100%{background:transparent}}
+.flash{animation:flash 2s ease-out 1}

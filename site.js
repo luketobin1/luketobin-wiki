@@ -27,7 +27,8 @@
     var t=e.t.toLowerCase(),p=e.p.toLowerCase(),k=e.k.toLowerCase(),s=0,words=q.split(/\s+/).filter(Boolean);
     for(var i=0;i<words.length;i++){var w=words[i];
       if(t.indexOf(w)===0)s+=6;else if(t.indexOf(w)>-1)s+=4;else if(p.indexOf(w)>-1)s+=2;else if(k.indexOf(w)>-1)s+=1;else return 0;}
-    return s+(e.p==='Article'?1:0);
+    var here=(e.u.split('#')[0].replace(/\/$/,'')||'/')===(location.pathname.replace(/\/index\.html$/,'/').replace(/\.html$/,'').replace(/\/$/,'')||'/');
+    return s+(e.p==='Article'?1:0)+(here?2:0);
   }
   function render(){
     box.innerHTML='';
@@ -50,11 +51,33 @@
     else if(ev.key==='ArrowUp'){active=Math.max(active-1,0);render();ev.preventDefault();}
     else if(ev.key==='Escape'){box.hidden=true;}
   });
+  function norm(p){return p.replace(/\/index\.html$/,'/').replace(/\/$/,'')||'/';}
+  function go(e){
+    var parts=e.u.split('#'),path=parts[0],hash=parts[1];
+    box.hidden=true;input.value='';results=[];active=-1;input.blur();
+    if(norm(path)===norm(location.pathname)){
+      var el=hash?document.getElementById(hash):document.querySelector('h1');
+      if(el){
+        el.scrollIntoView({behavior:'smooth',block:'start'});
+        if(hash){history.replaceState(null,'','#'+hash);}
+        el.classList.remove('flash');void el.offsetWidth;el.classList.add('flash');
+      }
+    }else{location.href=e.u;}
+  }
+  box.addEventListener('click',function(ev){
+    var a=ev.target.closest('a');if(!a)return;
+    var i=[].indexOf.call(box.querySelectorAll('a'),a);
+    if(results[i]){ev.preventDefault();go(results[i]);}
+  });
   form.addEventListener('submit',function(ev){
     ev.preventDefault();
+    var q=input.value.trim();
+    if(q&&!results.length){input.dispatchEvent(new Event('input'));}
     var e=results[active>=0?active:0];
-    if(e){location.href=e.u;}else if(input.value.trim()){box.innerHTML='<li class="none">No matching pages or sections</li>';box.hidden=false;}
+    if(e){go(e);}else if(q){box.innerHTML='<li class="none">No matching pages or sections</li>';box.hidden=false;}
   });
+  input.addEventListener('focus',function(){if(input.value.trim())input.dispatchEvent(new Event('input'));});
+  var h=location.hash&&document.getElementById(location.hash.slice(1));
+  if(h){h.classList.add('flash');}
   document.addEventListener('click',function(ev){if(!form.contains(ev.target))box.hidden=true;});
-  window.addEventListener('hashchange',function(){box.hidden=true;input.blur();});
 })();
