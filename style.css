@@ -38,12 +38,13 @@ sup.ref a{padding:0 1px}
 
 /* Infobox */
 .infobox{float:right;width:300px;margin:0 0 18px 24px;border:1px solid var(--rule);background:var(--soft);font-size:.86rem;line-height:1.45}
-.infobox caption{caption-side:top;font:600 1.15rem var(--serif);padding:10px 8px 6px;text-align:center;background:var(--soft);border:1px solid var(--rule);border-bottom:0}
-.infobox table{width:100%;border-collapse:collapse}
+.infobox caption{caption-side:top;font:600 1.15rem var(--serif);padding:10px 8px 6px;text-align:center}
+.infobox table{width:100%;border-collapse:collapse;table-layout:fixed}
+.infobox td{overflow-wrap:anywhere}
 .infobox th,.infobox td{padding:5px 8px;vertical-align:top;text-align:left}
 .infobox th{width:38%;font-weight:600}
 .infobox .sec{background:color-mix(in srgb,var(--accent) 12%,transparent);text-align:center;font-weight:600}
-.portrait{display:block;padding:10px 8px 4px;text-align:center}
+.infobox td.portrait{padding:10px 8px 4px;text-align:center}
 .portrait img{max-width:100%;height:auto;display:block;margin:0 auto}
 .portrait .ph{width:220px;max-width:100%;aspect-ratio:4/5;margin:0 auto;border:1px dashed var(--rule);display:grid;place-items:center;color:var(--muted);font:400 2.4rem var(--serif)}
 .portrait figcaption{font-size:.8rem;color:var(--muted);margin-top:6px}
